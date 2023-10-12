@@ -1,0 +1,36 @@
+name: Publish to next Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-publish:
+    name: Run publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out git repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: "yarn"
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install yarn dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test
+
+      - name: Publish
+        run: yarn publish:next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

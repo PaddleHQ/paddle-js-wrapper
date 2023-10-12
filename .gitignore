@@ -1,0 +1,13 @@
+# Cache
+.DS_Store
+.cache
+.idea
+
+# generated files
+dist
+node_modules
+coverage
+
+#logs
+*.log
+.vim
