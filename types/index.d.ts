@@ -7,6 +7,7 @@ import {
   PaddleEventData,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
+import { PricePreviewParams, PricePreviewResponse } from 'types/price-preview/price-preview';
 
 export {
   CheckoutEventNames,
@@ -55,6 +56,7 @@ export interface Paddle {
   Environment: {
     set(environment: Environments): void;
   };
+  PricePreview: (params: PricePreviewParams) => Promise<PricePreviewResponse>;
   Setup(options: PaddleSetupOptions): void;
   Spinner: {
     show(): void;
