@@ -15,6 +15,7 @@ const mockedPaddleInstance: Paddle = {
   Environment: {
     set: jest.fn(),
   },
+  PricePreview: jest.fn(),
   Setup: jest.fn(),
   Spinner: {
     hide: jest.fn(),
