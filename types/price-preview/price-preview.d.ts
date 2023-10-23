@@ -51,7 +51,7 @@ interface PriceEntity {
     maximum: number
   }
   status: 'active' | 'archived'
-  custom_data: Record<any, any> | null
+  custom_data: Record<string, unknown> | null
 }
 
 interface Discount {
@@ -107,7 +107,7 @@ interface LineItem {
     description: string
     tax_category: string
     image_url: string | null
-    custom_data: Record<any, any> | null
+    custom_data: Record<string, unknown> | null
     status: 'active' | 'archived'
     created_at: string
   }
