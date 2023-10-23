@@ -47,7 +47,7 @@ export {
   CheckoutCustomerBusiness,
   PricePreviewItem,
   PricePreviewParams,
-  PricePreviewResponse
+  PricePreviewResponse,
 };
 
 export interface Paddle {
