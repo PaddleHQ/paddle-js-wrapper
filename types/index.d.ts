@@ -7,7 +7,7 @@ import {
   PaddleEventData,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
-import { PricePreviewParams, PricePreviewResponse } from 'types/price-preview/price-preview';
+import { PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
 
 export {
   CheckoutEventNames,
