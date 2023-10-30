@@ -1,140 +1,128 @@
 export interface PricePreviewItem {
-  price_id: string;
+  priceId: string;
   quantity: number;
 }
 
 export interface PricePreviewParams {
   items: PricePreviewItem[];
-  customer_id?: string;
-  address_id?: string;
-  business_id?: string;
-  currency_code?: string;
-  discount_id?: string;
+  customerId?: string;
+  addressId?: string;
+  businessId?: string;
+  currencyCode?: string;
+  discountId?: string;
   address?: {
-    country_code: string;
-    postal_code?: string;
+    countryCode: string;
+    postalCode?: string;
   };
-  customer_ip_address?: string;
+  customerIpAddress?: string;
 }
 
 interface UnitPrice {
   amount: string;
-  currency_code: string;
+  currencyCode: string;
 }
 
-interface BillingCycle {
-  interval: 'day' | 'week' | 'month' | 'year';
-  frequency: number;
-}
-
-interface TrialPeriod {
+interface TimePeriod {
   interval: 'day' | 'week' | 'month' | 'year';
   frequency: number;
 }
 
 interface UnitPriceOverride {
-  country_codes: string[];
-  unit_price: UnitPrice;
+  countryCodes: string[];
+  unitPrice: UnitPrice;
 }
 
-interface PriceEntity {
+interface Quantity {
+  minimum: number;
+  maximum: number;
+}
+
+interface Price {
   id: string;
-  product_id: string;
+  productId: string;
   description: string;
-  billing_cycle: BillingCycle | null;
-  trial_period: TrialPeriod | null;
-  tax_mode: 'account_setting' | 'external' | 'internal';
-  unit_price: UnitPrice;
-  unit_price_overrides: UnitPriceOverride[];
-  quantity: {
-    minimum: number;
-    maximum: number;
-  };
+  billingCycle: BillingCycle | null;
+  trialPeriod: TimePeriod | null;
+  taxMode: 'account_setting' | 'external' | 'internal';
+  unitPrice: UnitPrice;
+  unitPriceOverrides: UnitPriceOverride[];
+  quantity: Quantity;
   status: 'active' | 'archived';
-  custom_data: Record<string, unknown> | null;
+  customData: Record<string, unknown> | null;
 }
 
 interface Discount {
   id: string;
   status: 'active' | 'archived' | 'expired' | 'used';
   description: string;
-  enabled_for_checkout: boolean;
+  enabledForCheckout: boolean;
   code: string | null;
   type: 'flat' | 'flat_per_seat' | 'percentage';
   amount: string;
-  currency_code: string | null;
+  currencyCode: string | null;
   recur: boolean;
-  maximum_recurring_intervals: number | null;
-  usage_limit: number | null;
-  restrict_to: string[] | null;
-  expires_at: string | null;
-  times_used: number;
-  created_at: string;
-  updated_at: string;
+  maximumRecurringIntervals: number | null;
+  usageLimit: number | null;
+  restrictTo: string[] | null;
+  expiresAt: string | null;
+  timesUsed: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface Totals {
+  subtotal: string;
+  discount: string;
+  tax: string;
+  total: string;
+}
+
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  taxCategory: string;
+  imageUrl: string | null;
+  customData: Record<string, unknown> | null;
+  status: 'active' | 'archived';
+  createdAt: string;
+}
+
+interface DiscountLineItem {
+  discount: Discount;
+  total: string;
+  formattedTotal: string;
 }
 
 interface LineItem {
-  price: PriceEntity;
+  price: Price;
   quantity: number;
-  tax_rate: string;
-  unit_totals: {
-    subtotal: string;
-    discount: string;
-    tax: string;
-    total: string;
-  };
-  formatted_unit_totals: {
-    subtotal: string;
-    discount: string;
-    tax: string;
-    total: string;
-  };
-  totals: {
-    subtotal: string;
-    discount: string;
-    tax: string;
-    total: string;
-  };
-  formatted_totals: {
-    subtotal: string;
-    discount: string;
-    tax: string;
-    total: string;
-  };
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    tax_category: string;
-    image_url: string | null;
-    custom_data: Record<string, unknown> | null;
-    status: 'active' | 'archived';
-    created_at: string;
-  };
-  discounts: {
-    discount: Discount;
-    total: string;
-    formatted_total: string;
-  }[];
+  taxRate: string;
+  unitTotals: Totals;
+  formattedUnitTotals: Totals;
+  totals: Totals;
+  formattedTotals: Totals;
+  product: Product;
+  discounts: DiscountLineItem[];
 }
 
 export interface PricePreviewResponse {
   data: {
-    customer_id: string | null;
-    address_id: string | null;
-    business_id: string | null;
-    currency_code: string;
+    customerId: string | null;
+    addressId: string | null;
+    businessId: string | null;
+    currencyCode: string;
     address: {
-      country_code: string;
-      postal_code: string | null;
+      countryCode: string;
+      postalCode: string | null;
     } | null;
-    customer_ip_address: string | null;
-    discount_id: string | null;
+    customerIpAddress: string | null;
+    discountId: string | null;
     details: {
-      line_items: LineItem[];
+      lineItems: LineItem[];
     };
   };
   meta: {
-    request_id: string;
+    requestId: string;
   };
 }
