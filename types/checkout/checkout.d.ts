@@ -78,8 +78,21 @@ interface CheckoutOpenOptionsWithDiscountCode {
 interface CheckoutOpenBaseOptions {
   settings?: CheckoutSettings;
   customer?: CheckoutCustomer;
-  customData?: Record<string, string | number | boolean>;
+  customData?: Record<string, Encodable>;
 }
+
+/*
+ * While JSON.stringify encodes Dates to ISO string,
+ * we do not consider Date as Encodable,
+ * because it does not decode to Date type automatically (remains ISO string)
+ *
+ * It is better to leave for developers to decide to encode Date,
+ * otherwise they can get unexpected behavior
+ */
+type EncodablePrimitive = string | number | boolean | null;
+type EncodableMap = Record<string, Encodable>;
+type EncodableArray = Array<Encodable>;
+type Encodable = EncodablePrimitive | EncodableMap | EncodableArray;
 
 type CheckoutOpenOptionsWithLineItems = CheckoutOpenOptionsWithItems | CheckoutOpenOptionsWithTransactionId;
 type CheckoutOpenOptionsWithDiscount = CheckoutOpenOptionsWithDiscountId | CheckoutOpenOptionsWithDiscountCode;
