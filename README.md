@@ -64,7 +64,7 @@ export function Checkout() {
 
   // Download and initialize Paddle instance from CDN
   useEffect(() => {
-    initializePaddle({ environment: 'ENVIRONMENT_GOES_HERE', seller: 'SELLER_ID_GOES_HERE' }).then(
+    initializePaddle({ environment: 'ENVIRONMENT_GOES_HERE', token: 'AUTH_TOKEN_GOES_HERE' }).then(
       (paddleInstance: Paddle | undefined) => {
         if (paddleInstance) {
           setPaddle(paddleInstance);
