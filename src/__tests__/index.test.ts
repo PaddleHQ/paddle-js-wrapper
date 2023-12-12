@@ -15,6 +15,11 @@ const mockedPaddleInstance: Paddle = {
     set: jest.fn(),
   },
   PricePreview: jest.fn(),
+  TransactionPreview: jest.fn(),
+  Retain: {
+    demo: jest.fn(),
+    initCancellationFlow: jest.fn(),
+  },
   Setup: jest.fn(),
   Spinner: {
     hide: jest.fn(),
