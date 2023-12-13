@@ -1,3 +1,5 @@
+import { AvailablePaymentMethod, Price, Product, Totals } from '../shared/shared';
+
 export interface PricePreviewItem {
   priceId: string;
   quantity: number;
@@ -17,40 +19,6 @@ export interface PricePreviewParams {
   customerIpAddress?: string;
 }
 
-interface UnitPrice {
-  amount: string;
-  currencyCode: string;
-}
-
-interface TimePeriod {
-  interval: 'day' | 'week' | 'month' | 'year';
-  frequency: number;
-}
-
-interface UnitPriceOverride {
-  countryCodes: string[];
-  unitPrice: UnitPrice;
-}
-
-interface Quantity {
-  minimum: number;
-  maximum: number;
-}
-
-interface Price {
-  id: string;
-  productId: string;
-  description: string;
-  billingCycle: BillingCycle | null;
-  trialPeriod: TimePeriod | null;
-  taxMode: 'account_setting' | 'external' | 'internal';
-  unitPrice: UnitPrice;
-  unitPriceOverrides: UnitPriceOverride[];
-  quantity: Quantity;
-  status: 'active' | 'archived';
-  customData: Record<string, unknown> | null;
-}
-
 interface Discount {
   id: string;
   status: 'active' | 'archived' | 'expired' | 'used';
@@ -68,24 +36,6 @@ interface Discount {
   timesUsed: number;
   createdAt: string;
   updatedAt: string;
-}
-
-interface Totals {
-  subtotal: string;
-  discount: string;
-  tax: string;
-  total: string;
-}
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  taxCategory: string;
-  imageUrl: string | null;
-  customData: Record<string, unknown> | null;
-  status: 'active' | 'archived';
-  createdAt: string;
 }
 
 interface DiscountLineItem {
@@ -121,6 +71,7 @@ export interface PricePreviewResponse {
     details: {
       lineItems: LineItem[];
     };
+    availablePaymentMethods: AvailablePaymentMethod[];
   };
   meta: {
     requestId: string;

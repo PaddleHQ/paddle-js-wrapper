@@ -8,6 +8,17 @@ import {
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
 import { PricePreviewItem, PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
+import {
+  RetainCancellationFlowAttributeProps,
+  RetainCancellationFlowResult,
+  RetainDemoAttributeProps,
+} from './checkout/retain';
+import {
+  TransactionPreviewParams,
+  TransactionPreviewResponse,
+  TransactionPreviewItem,
+} from './transaction-preview/transaction-preview';
+import { Totals, AvailablePaymentMethod } from './shared/shared';
 
 export {
   CheckoutEventNames,
@@ -36,6 +47,7 @@ export type Environments = 'production' | 'sandbox';
 export type Theme = 'light' | 'dark';
 
 export {
+  AvailablePaymentMethod,
   CheckoutOpenOptions,
   PaddleSetupOptions,
   CheckoutLineItem,
@@ -48,6 +60,13 @@ export {
   PricePreviewItem,
   PricePreviewParams,
   PricePreviewResponse,
+  RetainCancellationFlowAttributeProps,
+  RetainCancellationFlowResult,
+  RetainDemoAttributeProps,
+  Totals,
+  TransactionPreviewItem,
+  TransactionPreviewParams,
+  TransactionPreviewResponse,
 };
 
 export interface Paddle {
@@ -59,7 +78,12 @@ export interface Paddle {
   Environment: {
     set(environment: Environments): void;
   };
+  Retain: {
+    demo: (parameters: RetainDemoAttributeProps) => void;
+    initCancellationFlow: (parameters: RetainCancellationFlowAttributeProps) => Promise<RetainCancellationFlowResult>;
+  };
   PricePreview: (params: PricePreviewParams) => Promise<PricePreviewResponse>;
+  TransactionPreview: (params: TransactionPreviewParams) => Promise<TransactionPreviewResponse>;
   Setup(options: PaddleSetupOptions): void;
   Spinner: {
     show(): void;
