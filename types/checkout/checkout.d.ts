@@ -1,4 +1,11 @@
-import { CheckoutEventNames, CheckoutEventsData, CheckoutEventError, DisplayMode, Theme } from '../index';
+import {
+  CheckoutEventNames,
+  CheckoutEventsData,
+  CheckoutEventError,
+  DisplayMode,
+  Theme,
+  AvailablePaymentMethod,
+} from '../index';
 import { CheckoutCustomer } from './customer';
 
 export interface CheckoutSettings {
@@ -12,6 +19,7 @@ export interface CheckoutSettings {
   frameStyle?: string;
   frameInitialHeight?: number;
   successUrl?: string;
+  allowedPaymentMethods?: AvailablePaymentMethod[];
 }
 
 interface PaddleSetupBaseOptions {
