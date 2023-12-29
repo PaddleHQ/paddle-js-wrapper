@@ -1,6 +1,6 @@
 {
   "name": "@paddle/paddle-js",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Wrapper to load Paddle.js as a module and use TypeScript definitions when working with methods.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
