@@ -76,7 +76,7 @@ export function Checkout() {
   // Callback to open a checkout
   const openCheckout = () => {
     paddle?.Checkout.open({
-      items: [{ priceId: 'PRICE_ID_GOES_HERE' }],
+      items: [{ priceId: 'PRICE_ID_GOES_HERE', quantity: 1 }],
     });
   };
 }
