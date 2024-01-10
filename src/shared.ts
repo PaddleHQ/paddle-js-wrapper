@@ -9,7 +9,6 @@ export function findScript(): HTMLScriptElement | undefined {
 export function injectScript(src: string): HTMLScriptElement {
   const script = document.createElement('script');
   script.src = src;
-  script.crossOrigin = 'anonymous';
 
   const headOrBody = document.head || document.body;
 
