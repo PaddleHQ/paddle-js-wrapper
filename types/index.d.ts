@@ -5,6 +5,7 @@ import {
   PaddleSetupOptions,
   CheckoutSettings,
   PaddleEventData,
+  PaddleSetupPwCustomer,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
 import { PricePreviewItem, PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
@@ -47,6 +48,7 @@ export type Environments = 'production' | 'sandbox';
 export type Theme = 'light' | 'dark';
 
 export {
+  PaddleSetupPwCustomer,
   AvailablePaymentMethod,
   CheckoutOpenOptions,
   PaddleSetupOptions,
@@ -84,6 +86,9 @@ export interface Paddle {
   };
   PricePreview: (params: PricePreviewParams) => Promise<PricePreviewResponse>;
   TransactionPreview: (params: TransactionPreviewParams) => Promise<TransactionPreviewResponse>;
+  /**
+    @deprecated. Use `Paddle.Initialize` instead.
+   */
   Setup(options: PaddleSetupOptions): void;
   Spinner: {
     show(): void;
@@ -92,12 +97,15 @@ export interface Paddle {
   Status: {
     libraryVersion: string;
   };
+  Initialized: boolean;
+  Initialize(options: PaddleSetupOptions): void;
+  Update(options: Partial<PaddleSetupOptions>): void;
 }
 
 declare global {
   interface Window {
     // Paddle.JS will be downloaded directly from our CDN and added to global variable
-    Paddle?: Paddle;
+    Paddle?: Paddle | undefined;
   }
 }
 

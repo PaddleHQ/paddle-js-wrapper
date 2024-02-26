@@ -11,12 +11,6 @@ This package is a wrapper for Paddle.js that lets you:
 
 > **Important:** This package works for Paddle.js v2, which is part of Paddle Billing. It does not support Paddle Classic. To work with Paddle.js v1, see: [Paddle.js v1 reference](https://developer.paddle.com/classic/reference/ZG9jOjI1MzUzOTg3-paddle-reference?utm_source=dx&utm_medium=paddle-js-wrapper)
 
-## Before you begin
-
-This is a beta release, which means it's ready to rely on but we're actively looking for feedback. If you've used this package, we'd love to hear how you found it! Email us at [team-dx@paddle.com](mailto:team-dx@paddle.com) with any thoughts.
-
-While in beta, we may introduce breaking changes in the future. We'll always tag breaking changes and communicate ahead of time, so you have time to update.
-
 ## Installation
 
 Install using `npm`:

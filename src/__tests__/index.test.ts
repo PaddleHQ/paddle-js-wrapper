@@ -25,33 +25,50 @@ const mockedPaddleInstance: Paddle = {
     hide: jest.fn(),
     show: jest.fn(),
   },
+  Initialized: false,
+  Initialize: jest.fn(),
+  Update: jest.fn(),
 };
 describe('initializePaddle', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
   test('Should initialize Paddle with Seller ID', async () => {
     jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve(mockedPaddleInstance));
     const paddle = await initializePaddle({ seller: 1 });
     expect(paddle?.Status.libraryVersion).toBe('2.0');
-    expect(paddle?.Setup).toBeCalledWith({ seller: 1 });
+    expect(paddle?.Initialize).toBeCalledWith({ seller: 1 });
   });
 
   test('Should initialize Paddle with Token', async () => {
     jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve(mockedPaddleInstance));
     const paddle = await initializePaddle({ token: 'TOKEN' });
     expect(paddle?.Status.libraryVersion).toBe('2.0');
-    expect(paddle?.Setup).toBeCalledWith({ token: 'TOKEN' });
+    expect(paddle?.Initialize).toBeCalledWith({ token: 'TOKEN' });
   });
 
   test('Should initialize Paddle with Sandbox Environment', async () => {
     jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve(mockedPaddleInstance));
     const paddle = await initializePaddle({ seller: 1, environment: 'sandbox' });
     expect(paddle?.Environment.set).toBeCalledWith('sandbox');
-    expect(paddle?.Setup).toBeCalledWith({ seller: 1 });
+    expect(paddle?.Initialize).toBeCalledWith({ seller: 1 });
+  });
+
+  test('Should call update if Paddle is already initialized', async () => {
+    const updatedMockedPaddleInstance = { ...mockedPaddleInstance, Initialized: true };
+    jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve(updatedMockedPaddleInstance));
+    const paddle = await initializePaddle({ seller: 1, environment: 'sandbox' });
+    expect(paddle?.Environment.set).toBeCalledWith('sandbox');
+    expect(paddle?.Initialize).not.toBeCalled();
+    expect(paddle?.Update).toBeCalledWith({ seller: 1 });
   });
 
   test('Should return error when initialization fails', async () => {
     const consoleWarn = jest.spyOn(console, 'warn');
-    // @ts-expect-error - undefined is not a valid value
-    jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve({ ...mockedPaddleInstance, Setup: undefined }));
+    jest
+      .spyOn(shared, 'loadFromCDN')
+      // @ts-expect-error - undefined is not a valid value for Initialize
+      .mockResolvedValue(Promise.resolve({ ...mockedPaddleInstance, Initialize: undefined }));
     await initializePaddle({ seller: 1, environment: 'sandbox' });
     expect(consoleWarn).toBeCalledTimes(1);
   });

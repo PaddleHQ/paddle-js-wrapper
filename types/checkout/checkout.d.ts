@@ -22,12 +22,14 @@ export interface CheckoutSettings {
   allowedPaymentMethods?: AvailablePaymentMethod[];
 }
 
+export interface PaddleSetupPwCustomer {
+  id?: string;
+  email?: string;
+}
+
 interface PaddleSetupBaseOptions {
   pwAuth?: string;
-  pwCustomer?: {
-    id?: string;
-    email?: string;
-  };
+  pwCustomer?: PaddleSetupPwCustomer;
   debug?: boolean;
   eventCallback?: (event: PaddleEventData) => void;
   checkout?: {
