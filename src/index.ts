@@ -18,9 +18,11 @@ export async function initializePaddle(options?: InitializePaddleOptions): Promi
         if (environment) {
           paddle.Environment.set(environment);
         }
-        paddle.Setup({
-          ...rest,
-        });
+        if (paddle.Initialized) {
+          paddle.Update({ ...rest });
+        } else {
+          paddle.Initialize({ ...rest });
+        }
       } catch (e) {
         console.warn('Paddle Initialization failed. Please check the inputs', e);
       }
