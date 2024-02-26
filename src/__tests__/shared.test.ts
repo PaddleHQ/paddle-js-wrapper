@@ -26,6 +26,9 @@ const mockedPaddleInstance: Paddle = {
     hide: jest.fn(),
     show: jest.fn(),
   },
+  Initialized: false,
+  Initialize: jest.fn(),
+  Update: jest.fn(),
 };
 
 interface SharedModule {
