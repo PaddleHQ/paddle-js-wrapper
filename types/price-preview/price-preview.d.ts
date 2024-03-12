@@ -1,4 +1,4 @@
-import { AvailablePaymentMethod, Price, Product, Totals } from '../shared/shared';
+import { AvailablePaymentMethod, CurrencyCode, Price, Product, Totals } from '../shared/shared';
 
 export interface PricePreviewItem {
   priceId: string;
@@ -10,7 +10,7 @@ export interface PricePreviewParams {
   customerId?: string;
   addressId?: string;
   businessId?: string;
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
   discountId?: string;
   address?: {
     countryCode: string;
@@ -27,7 +27,7 @@ interface Discount {
   code: string | null;
   type: 'flat' | 'flat_per_seat' | 'percentage';
   amount: string;
-  currencyCode: string | null;
+  currencyCode: CurrencyCode | null;
   recur: boolean;
   maximumRecurringIntervals: number | null;
   usageLimit: number | null;
@@ -61,7 +61,7 @@ export interface PricePreviewResponse {
     customerId: string | null;
     addressId: string | null;
     businessId: string | null;
-    currencyCode: string;
+    currencyCode: CurrencyCode;
     address: {
       countryCode: string;
       postalCode: string | null;

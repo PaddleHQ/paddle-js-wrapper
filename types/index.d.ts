@@ -19,7 +19,7 @@ import {
   TransactionPreviewResponse,
   TransactionPreviewItem,
 } from './transaction-preview/transaction-preview';
-import { Totals, AvailablePaymentMethod } from './shared/shared';
+import { Totals, AvailablePaymentMethod, CurrencyCode } from './shared/shared';
 
 export {
   CheckoutEventNames,
@@ -50,6 +50,7 @@ export type Theme = 'light' | 'dark';
 export {
   PaddleSetupPwCustomer,
   AvailablePaymentMethod,
+  CurrencyCode,
   CheckoutOpenOptions,
   PaddleSetupOptions,
   CheckoutLineItem,

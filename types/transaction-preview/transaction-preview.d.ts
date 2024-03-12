@@ -1,4 +1,4 @@
-import { AvailablePaymentMethod, Price, Product, Totals } from '../shared/shared';
+import { AvailablePaymentMethod, CurrencyCode, Price, Product, Totals } from '../shared/shared';
 
 export interface TransactionPreviewItem {
   priceId: string;
@@ -11,7 +11,7 @@ export interface TransactionPreviewParams {
   customerId?: string;
   addressId?: string;
   businessId?: string;
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
   discountId?: string;
   address?: {
     countryCode: string;
@@ -53,7 +53,7 @@ interface TransactionTotal {
   grandTotal: string;
   fee: string | null;
   earnings: string | null;
-  currencyCode: string;
+  currencyCode: CurrencyCode;
 }
 
 interface TransactionLineItems {
@@ -76,7 +76,7 @@ export interface TransactionPreviewResponse {
     customerId: string | null;
     addressId: string | null;
     businessId: string | null;
-    currencyCode: string;
+    currencyCode: CurrencyCode;
     address: {
       countryCode: string;
       postalCode: string | null;

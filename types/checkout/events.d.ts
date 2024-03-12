@@ -1,4 +1,6 @@
 // Note: The enums in this file is only for types. For it to work in the application please update the `src` directory
+import { CurrencyCode } from '../shared/shared';
+
 export enum CheckoutEventNames {
   CHECKOUT_LOADED = 'checkout.loaded',
   CHECKOUT_CLOSED = 'checkout.closed',
@@ -138,7 +140,7 @@ export interface CheckoutEventsDiscount {
 }
 
 export interface CheckoutEventsData {
-  currency_code: string;
+  currency_code: CurrencyCode;
   custom_data?: object | null;
   customer: CheckoutEventsCustomer;
   discount?: CheckoutEventsDiscount;

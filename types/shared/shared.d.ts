@@ -28,7 +28,7 @@ export interface Product {
 
 export interface UnitPrice {
   amount: string;
-  currencyCode: string;
+  currencyCode: CurrencyCode;
 }
 
 export interface TimePeriod {
@@ -68,3 +68,35 @@ export interface Price {
 }
 
 export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
+
+export type CurrencyCode =
+  | 'USD'
+  | 'EUR'
+  | 'GBP'
+  | 'JPY'
+  | 'AUD'
+  | 'CAD'
+  | 'CHF'
+  | 'HKD'
+  | 'SGD'
+  | 'SEK'
+  | 'ARS'
+  | 'BRL'
+  | 'CNY'
+  | 'COP'
+  | 'CZK'
+  | 'DKK'
+  | 'HUF'
+  | 'ILS'
+  | 'INR'
+  | 'KRW'
+  | 'MXN'
+  | 'NOK'
+  | 'NZD'
+  | 'PLN'
+  | 'RUB'
+  | 'THB'
+  | 'TRY'
+  | 'TWD'
+  | 'UAH'
+  | 'ZAR';
