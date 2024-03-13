@@ -1,3 +1,23 @@
+import { CountryCode } from './country-code';
+import { CurrencyCode } from './currency-code';
+
+export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
+
+export type TaxMode = 'account_setting' | 'external' | 'internal';
+
+export type Status = 'active' | 'archived';
+
+export type TaxCategory =
+  | 'digital-goods'
+  | 'ebooks'
+  | 'implementation-services'
+  | 'professional-services'
+  | 'saas'
+  | 'software-programming-services'
+  | 'standard'
+  | 'training-services'
+  | 'website-hosting';
+
 export interface Totals {
   subtotal: string;
   discount: string;
@@ -9,26 +29,17 @@ export interface Product {
   id: string;
   name: string;
   description: string | null;
-  taxCategory:
-    | 'digital-goods'
-    | 'ebooks'
-    | 'implementation-services'
-    | 'professional-services'
-    | 'saas'
-    | 'software-programming-services'
-    | 'standard'
-    | 'training-services'
-    | 'website-hosting';
+  taxCategory: TaxCategory;
   imageUrl: string | null;
   customData: Record<string, unknown> | null;
-  status: 'active' | 'archived';
+  status: Status;
   createdAt: string;
   importMeta: ImportMeta | null;
 }
 
 export interface UnitPrice {
   amount: string;
-  currencyCode: string;
+  currencyCode: CurrencyCode;
 }
 
 export interface TimePeriod {
@@ -42,7 +53,7 @@ export interface Quantity {
 }
 
 export interface UnitPriceOverride {
-  countryCodes: string[];
+  countryCodes: CountryCode[];
   unitPrice: UnitPrice;
 }
 
@@ -58,13 +69,43 @@ export interface Price {
   description: string;
   billingCycle: TimePeriod | null;
   trialPeriod: TimePeriod | null;
-  taxMode: 'account_setting' | 'external' | 'internal';
+  taxMode: TaxMode;
   unitPrice: UnitPrice;
   unitPriceOverrides: UnitPriceOverride[];
   quantity: Quantity;
-  status: 'active' | 'archived';
+  status: Status;
   customData: Record<string, unknown> | null;
   importMeta: ImportMeta | null;
 }
 
-export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
+export interface NonCatalogProductRequest {
+  name: string;
+  taxCategory: TaxCategory;
+  description?: string | null;
+  imageUrl?: string | null;
+  customData?: Record<string, unknown>;
+}
+
+interface NonCatalogBasePriceRequest {
+  name?: string;
+  description: string;
+  unitPrice: UnitPrice;
+  billingCycle?: TimePeriod;
+  trialPeriod?: TimePeriod;
+  taxMode?: TaxMode;
+  unitPriceOverrides?: UnitPriceOverride[];
+  quantity?: Quantity;
+  customData?: Record<string, unknown>;
+}
+
+interface NonCatalogBasePriceRequestWithProductId extends NonCatalogBasePriceRequest {
+  productId: string;
+  product?: never;
+}
+
+interface NonCatalogBasePriceRequestWithProduct extends NonCatalogBasePriceRequest {
+  productId?: never;
+  product: NonCatalogProductRequest;
+}
+
+export type NonCatalogPriceRequest = NonCatalogBasePriceRequestWithProductId | NonCatalogBasePriceRequestWithProduct;
