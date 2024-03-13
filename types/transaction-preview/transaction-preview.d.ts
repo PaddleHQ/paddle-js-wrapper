@@ -1,17 +1,29 @@
-import { AvailablePaymentMethod, Price, Product, Totals } from '../shared/shared';
+import { AvailablePaymentMethod, NonCatalogPriceRequest, Price, Product, Totals } from '../shared/shared';
+import { CurrencyCode } from '../shared/currency-code';
 
-export interface TransactionPreviewItem {
-  priceId: string;
+interface BaseTransactionItemPreview {
   quantity: number;
   includeInTotals?: boolean;
 }
+
+interface TransactionItemWithPriceId extends BaseTransactionItemPreview {
+  priceId: string;
+  price?: never;
+}
+
+interface TransactionItemWithPrice extends BaseTransactionItemPreview {
+  priceId?: never;
+  price: NonCatalogPriceRequest;
+}
+
+export type TransactionPreviewItem = TransactionItemWithPriceId | TransactionItemWithPrice;
 
 export interface TransactionPreviewParams {
   items: TransactionPreviewItem[];
   customerId?: string;
   addressId?: string;
   businessId?: string;
-  currencyCode?: string;
+  currencyCode?: CurrencyCode;
   discountId?: string;
   address?: {
     countryCode: string;
@@ -53,7 +65,7 @@ interface TransactionTotal {
   grandTotal: string;
   fee: string | null;
   earnings: string | null;
-  currencyCode: string;
+  currencyCode: CurrencyCode;
 }
 
 interface TransactionLineItems {
@@ -76,7 +88,7 @@ export interface TransactionPreviewResponse {
     customerId: string | null;
     addressId: string | null;
     businessId: string | null;
-    currencyCode: string;
+    currencyCode: CurrencyCode;
     address: {
       countryCode: string;
       postalCode: string | null;
