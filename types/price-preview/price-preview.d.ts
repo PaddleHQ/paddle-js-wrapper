@@ -1,4 +1,5 @@
-import { AvailablePaymentMethod, CurrencyCode, Price, Product, Totals } from '../shared/shared';
+import { AvailablePaymentMethod, Price, Product, Totals } from '../shared/shared';
+import { CurrencyCode } from '../shared/currency-code';
 
 export interface PricePreviewItem {
   priceId: string;

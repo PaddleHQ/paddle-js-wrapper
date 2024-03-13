@@ -1,10 +1,22 @@
-import { AvailablePaymentMethod, CurrencyCode, Price, Product, Totals } from '../shared/shared';
+import { AvailablePaymentMethod, NonCatalogPriceRequest, Price, Product, Totals } from '../shared/shared';
+import { CurrencyCode } from '../shared/currency-code';
 
-export interface TransactionPreviewItem {
-  priceId: string;
+interface BaseTransactionItemPreview {
   quantity: number;
   includeInTotals?: boolean;
 }
+
+interface TransactionItemWithPriceId extends BaseTransactionItemPreview {
+  priceId: string;
+  price?: never;
+}
+
+interface TransactionItemWithPrice extends BaseTransactionItemPreview {
+  priceId?: never;
+  price: NonCatalogPriceRequest;
+}
+
+export type TransactionPreviewItem = TransactionItemWithPriceId | TransactionItemWithPrice;
 
 export interface TransactionPreviewParams {
   items: TransactionPreviewItem[];

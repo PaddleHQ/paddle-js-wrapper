@@ -19,7 +19,11 @@ import {
   TransactionPreviewResponse,
   TransactionPreviewItem,
 } from './transaction-preview/transaction-preview';
-import { Totals, AvailablePaymentMethod, CurrencyCode } from './shared/shared';
+
+export * from './shared/shared';
+
+export { CurrencyCode } from './shared/currency-code';
+export { CountryCode } from './shared/country-code';
 
 export {
   CheckoutEventNames,
@@ -49,8 +53,6 @@ export type Theme = 'light' | 'dark';
 
 export {
   PaddleSetupPwCustomer,
-  AvailablePaymentMethod,
-  CurrencyCode,
   CheckoutOpenOptions,
   PaddleSetupOptions,
   CheckoutLineItem,
@@ -66,7 +68,6 @@ export {
   RetainCancellationFlowAttributeProps,
   RetainCancellationFlowResult,
   RetainDemoAttributeProps,
-  Totals,
   TransactionPreviewItem,
   TransactionPreviewParams,
   TransactionPreviewResponse,

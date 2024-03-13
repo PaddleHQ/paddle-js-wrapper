@@ -1,5 +1,5 @@
 // Note: The enums in this file is only for types. For it to work in the application please update the `src` directory
-import { CurrencyCode } from '../shared/shared';
+import { CurrencyCode } from '../shared/currency-code';
 
 export enum CheckoutEventNames {
   CHECKOUT_LOADED = 'checkout.loaded',
