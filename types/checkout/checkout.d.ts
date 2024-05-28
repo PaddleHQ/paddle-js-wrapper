@@ -97,3 +97,8 @@ type CheckoutOpenOptionsWithDiscount = CheckoutOpenOptionsWithDiscountId | Check
 export type CheckoutOpenOptions = CheckoutOpenBaseOptions &
   CheckoutOpenOptionsWithLineItems &
   CheckoutOpenOptionsWithDiscount;
+
+export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount & {
+  items: CheckoutOpenLineItem[];
+  customer?: CheckoutCustomer;
+};
