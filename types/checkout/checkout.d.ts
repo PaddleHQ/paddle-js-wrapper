@@ -98,4 +98,7 @@ export type CheckoutOpenOptions = CheckoutOpenBaseOptions &
   CheckoutOpenOptionsWithLineItems &
   CheckoutOpenOptionsWithDiscount;
 
-export type CheckoutUpdateOptions = Omit<CheckoutOpenOptions, 'settings' | 'customData' | 'transactionId'>;
+export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount & {
+  items: CheckoutOpenLineItem[];
+  customer?: CheckoutCustomer;
+};
