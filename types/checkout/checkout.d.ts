@@ -97,3 +97,5 @@ type CheckoutOpenOptionsWithDiscount = CheckoutOpenOptionsWithDiscountId | Check
 export type CheckoutOpenOptions = CheckoutOpenBaseOptions &
   CheckoutOpenOptionsWithLineItems &
   CheckoutOpenOptionsWithDiscount;
+
+export type CheckoutUpdateOptions = Omit<CheckoutOpenOptions, 'settings' | 'customData' | 'transactionId'>;

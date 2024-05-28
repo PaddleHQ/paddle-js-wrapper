@@ -6,6 +6,7 @@ import {
   CheckoutSettings,
   PaddleEventData,
   PaddleSetupPwCustomer,
+  CheckoutUpdateOptions,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
 import { PricePreviewItem, PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
@@ -54,6 +55,7 @@ export type Theme = 'light' | 'dark';
 export {
   PaddleSetupPwCustomer,
   CheckoutOpenOptions,
+  CheckoutUpdateOptions,
   PaddleSetupOptions,
   CheckoutLineItem,
   CheckoutOpenLineItem,
@@ -76,6 +78,7 @@ export {
 export interface Paddle {
   Checkout: {
     open(input: CheckoutOpenOptions): void;
+    updateCheckout(input: CheckoutUpdateOptions): void;
     updateItems(items: CheckoutLineItem[]): void;
     close(): void;
   };
