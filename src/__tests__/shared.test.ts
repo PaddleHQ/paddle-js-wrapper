@@ -11,6 +11,7 @@ const mockedPaddleInstance: Paddle = {
     close: jest.fn(),
     open: jest.fn(),
     updateItems: jest.fn(),
+    updateCheckout: jest.fn(),
   },
   Environment: {
     set: jest.fn(),
