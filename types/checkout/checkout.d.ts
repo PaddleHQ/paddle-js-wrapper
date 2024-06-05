@@ -20,6 +20,7 @@ export interface CheckoutSettings {
   frameInitialHeight?: number;
   successUrl?: string;
   allowedPaymentMethods?: AvailablePaymentMethod[];
+  allowDiscountRemoval?: boolean;
 }
 
 export interface PaddleSetupPwCustomer {

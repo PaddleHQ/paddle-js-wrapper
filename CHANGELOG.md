@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
 
+## 1.1.1-next.0 - 2024-06-05
+
+### Added
+
+- Added a new property(`allowDiscountRemoval`) to restrict users from removing discounts.
+
+---
+
 ## 1.1.0-next.0 - 2024-05-28
 
 ### Fixed
