@@ -1,6 +1,6 @@
 {
   "name": "@paddle/paddle-js",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Wrapper to load Paddle.js as a module and use TypeScript definitions when working with methods.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -13,9 +13,6 @@
     "lint": "eslint '{src,types}/**/*.ts'",
     "prettier": "prettier --check {src,types}/**/*.ts",
     "prettier:fix": "prettier --check {src,types}/**/*.ts --write",
-    "patch": "yarn version --patch --no-git-tag-version --no-commit-hooks",
-    "minor": "yarn version --minor --no-git-tag-version --no-commit-hooks",
-    "major": "yarn version --major --no-git-tag-version --no-commit-hooks",
     "release:next": "yarn version --prerelease --preid next --no-git-tag-version --no-commit-hooks",
     "publish:next": "yarn publish --tag next --access public",
     "publish:latest": "yarn publish --access public",
