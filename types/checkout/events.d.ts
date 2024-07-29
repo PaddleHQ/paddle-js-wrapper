@@ -56,6 +56,7 @@ export enum CheckoutEventsStatus {
   READY = 'ready',
   COMPLETED = 'completed',
   BILLED = 'billed',
+  PAID = 'paid',
   canceled = 'canceled',
   PAST_DUE = 'past_due',
 }
@@ -106,6 +107,7 @@ export interface CheckoutEventsTotals {
 export interface CheckoutEventsItem {
   billing_cycle?: CheckoutEventsTimePeriod;
   price_id: string;
+  price_name?: string | null;
   product: CheckoutEventsItemProduct;
   quantity: number;
   recurring_totals?: CheckoutEventsTotals;
