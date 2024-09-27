@@ -89,7 +89,7 @@ interface CheckoutOpenOptionsWithDiscountCode {
 interface CheckoutOpenBaseOptions {
   settings?: CheckoutSettings;
   customer?: CheckoutCustomer;
-  customData?: Record<string, string | number | boolean>;
+  customData?: Record<string, unknown>;
 }
 
 type CheckoutOpenOptionsWithLineItems = CheckoutOpenOptionsWithItems | CheckoutOpenOptionsWithTransactionId;
