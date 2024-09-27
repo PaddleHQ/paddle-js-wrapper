@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.2.2-next.0 - 2024-09-27
+
+### Fixed
+
+- Updated `customData` checkout type to allow nested objects.
+
+---
+
 ## 1.1.1-next.1 - 2024-07-29
 
 ### Fixed
@@ -28,7 +36,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 
 - Added missing type definition for `Paddle.Checkout.updateCheckout` [function](https://developer.paddle.com/paddlejs/methods/paddle-checkout-updatecheckout?utm_source=dx&utm_medium=paddle-js-wrapper).
 
---- 
+---
 
 ## 1.1.0 - 2024-05-16
 
@@ -36,7 +44,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 
 - Added changelog.
 
---- 
+---
 
 ## 1.0.3 - 2024-03-14
 
