@@ -80,11 +80,11 @@ interface CheckoutOpenOptionsWithTransactionId {
 }
 interface CheckoutOpenOptionsWithDiscountId {
   discountCode?: never;
-  discountId?: string;
+  discountId?: string | null;
 }
 
 interface CheckoutOpenOptionsWithDiscountCode {
-  discountCode?: string;
+  discountCode?: string | null;
   discountId?: never;
 }
 
