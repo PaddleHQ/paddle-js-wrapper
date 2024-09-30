@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.2.3-next.0 - 2024-09-30
+
+### Fixed
+
+- `Checkout.updateCheckout` `discountId` and `discountCode` can both be `null`.
+
+### Added
+
+- Added `variant` to checkout settings.
+
+---
+
 ## 1.2.2-next.0 - 2024-09-27
 
 ### Fixed
