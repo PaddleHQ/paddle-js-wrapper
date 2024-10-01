@@ -5,6 +5,7 @@ import {
   DisplayMode,
   Theme,
   AvailablePaymentMethod,
+  Variant,
 } from '../index';
 import { CheckoutCustomer } from './customer';
 
@@ -21,6 +22,7 @@ export interface CheckoutSettings {
   successUrl?: string;
   allowedPaymentMethods?: AvailablePaymentMethod[];
   allowDiscountRemoval?: boolean;
+  variant?: Variant;
 }
 
 export interface PaddleSetupPwCustomer {
@@ -78,11 +80,11 @@ interface CheckoutOpenOptionsWithTransactionId {
 }
 interface CheckoutOpenOptionsWithDiscountId {
   discountCode?: never;
-  discountId?: string;
+  discountId?: string | null;
 }
 
 interface CheckoutOpenOptionsWithDiscountCode {
-  discountCode?: string;
+  discountCode?: string | null;
   discountId?: never;
 }
 
