@@ -3,6 +3,8 @@ import { CurrencyCode } from './currency-code';
 
 export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
 
+export type Variant = 'multi-page' | 'one-page';
+
 export type TaxMode = 'account_setting' | 'external' | 'internal';
 
 export type Status = 'active' | 'archived';
