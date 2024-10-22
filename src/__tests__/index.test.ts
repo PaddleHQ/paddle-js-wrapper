@@ -1,8 +1,10 @@
 import { initializePaddle } from '../index';
-import * as shared from '../shared';
+import * as shared from '../utils/shared';
 import { Paddle } from '../../types';
+import { DefaultVersion } from '../constants/cdn-information';
 
 const mockedPaddleInstance: Paddle = {
+  Version: DefaultVersion,
   Status: {
     libraryVersion: '2.0',
   },
@@ -30,6 +32,7 @@ const mockedPaddleInstance: Paddle = {
   Initialize: jest.fn(),
   Update: jest.fn(),
 };
+
 describe('initializePaddle', () => {
   afterEach(() => {
     jest.clearAllMocks();
@@ -75,9 +78,9 @@ describe('initializePaddle', () => {
   });
 
   test("Should return error when PaddleJS can't be downloaded", async () => {
-    const consoleWarn = jest.spyOn(console, 'warn');
+    const consoleError = jest.spyOn(console, 'error');
     jest.spyOn(shared, 'loadFromCDN').mockResolvedValue(Promise.resolve(undefined));
     await initializePaddle({ seller: 1, environment: 'sandbox' });
-    expect(consoleWarn).toBeCalledWith('Error Loading Paddle');
+    expect(consoleError).toBeCalledWith('[Paddle] Error Loading Paddle');
   });
 });

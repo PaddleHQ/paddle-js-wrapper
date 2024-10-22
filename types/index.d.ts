@@ -50,6 +50,7 @@ export {
 
 export type DisplayMode = 'inline' | 'overlay';
 export type Environments = 'production' | 'sandbox';
+export type Version = 'classic' | 'v1';
 export type Theme = 'light' | 'dark';
 
 export {
@@ -105,17 +106,25 @@ export interface Paddle {
   Initialized: boolean;
   Initialize(options: PaddleSetupOptions): void;
   Update(options: Partial<PaddleSetupOptions>): void;
+  Version: Version;
 }
 
 declare global {
   interface Window {
     // Paddle.JS will be downloaded directly from our CDN and added to global variable
+    // We don't recommend using `Paddle` or `PaddleBillingV1` or `PaddleClassic` directly.
+    // Please use `getPaddleInstance` function to get Paddle instance.
     Paddle?: Paddle | undefined;
+    PaddleBillingV1?: Paddle | undefined;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    PaddleClassic?: any;
   }
 }
 
 export type InitializePaddleOptions = PaddleSetupOptions & {
+  version?: Version;
   environment?: Environments;
 };
 
 export function initializePaddle(options?: InitializePaddleOptions): Promise<Paddle | undefined>;
+export function getPaddleInstance(version?: Version);

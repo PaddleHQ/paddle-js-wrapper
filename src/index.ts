@@ -1,5 +1,7 @@
-import { loadFromCDN } from './shared';
-import { InitializePaddleOptions, Paddle } from '../types';
+import { loadFromCDN } from './utils/shared';
+import { InitializePaddleOptions, Paddle, Version } from '../types';
+import { DefaultVersion, Versions } from './constants/cdn-information';
+import { initializePaddleBillingV1, initializePaddleClassic } from './utils/initialize';
 
 export {
   CheckoutEventNames,
@@ -7,29 +9,34 @@ export {
   CheckoutEventsStatus,
   CheckoutEventsTimePeriodInterval,
   CheckoutEventsPaymentMethodTypes,
-} from './enums/checkout-events';
+} from './constants/checkout-events';
 
 export async function initializePaddle(options?: InitializePaddleOptions): Promise<Paddle | undefined> {
-  const paddle = await loadFromCDN();
+  const requestedVersion = options?.version || DefaultVersion;
+  const paddle = await loadFromCDN(requestedVersion);
   if (paddle) {
     if (options) {
-      const { environment, ...rest } = options;
-      try {
-        if (environment) {
-          paddle.Environment.set(environment);
-        }
-        if (paddle.Initialized) {
-          paddle.Update({ ...rest });
-        } else {
-          paddle.Initialize({ ...rest });
-        }
-      } catch (e) {
-        console.warn('Paddle Initialization failed. Please check the inputs', e);
+      if (requestedVersion === Versions.V1) {
+        initializePaddleBillingV1(options, paddle);
+      } else if (requestedVersion === Versions.CLASSIC) {
+        initializePaddleClassic(options, paddle);
       }
     }
     return paddle;
   } else {
-    console.warn('Error Loading Paddle');
+    console.error('[Paddle] Error Loading Paddle');
+    return;
+  }
+}
+
+export function getPaddleInstance(version: Version = DefaultVersion) {
+  if (version === Versions.V1) {
+    return window.PaddleBillingV1 as Paddle;
+  } else if (version === Versions.CLASSIC) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return window.PaddleClassic as any;
+  } else {
+    console.error('[Paddle] Unknown Paddle Version');
     return;
   }
 }
