@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.3.0-next.0 - 2024-10-22
+
+### Added
+
+- Support to include paddle classic concurrently with paddle billing
+- Build as UMD to allow script imports
+- Added `getPaddleInstance` to fetch classic or billing instance - version can be `classic` or `v1`
+
+---
+
 ## 1.2.3-next.0 - 2024-10-01
 
 ### Fixed

@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import ts from 'rollup-plugin-typescript2';
 import replace from '@rollup/plugin-replace';
 
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 const PLUGINS = [
   ts({
@@ -21,7 +21,7 @@ export default [
   {
     input: 'src/index.ts',
     output: [
-      { file: pkg.main, format: 'cjs' },
+      { file: pkg.main, format: 'umd', name: 'paddle', esModule: false, exports: 'named'},
       { file: pkg.module, format: 'es' },
     ],
     plugins: PLUGINS,
