@@ -1,9 +1,11 @@
-import { findScript, injectScript } from '../shared';
+import { findScript, getCDNInfoBasedOnVersion, injectScript } from '../utils/shared';
 import { Paddle } from '../../types';
+import { DefaultVersion } from '../constants/cdn-information';
 
 const PADDLE_JS_SCRIPT = 'script[src="https://cdn.paddle.com/paddle/v2/paddle.js"]';
 
 const mockedPaddleInstance: Paddle = {
+  Version: DefaultVersion,
   Status: {
     libraryVersion: '2.0',
   },
@@ -33,11 +35,11 @@ const mockedPaddleInstance: Paddle = {
 };
 
 interface SharedModule {
-  loadFromCDN: () => Promise<Paddle | undefined>;
+  loadFromCDN: (version: string) => Promise<Paddle | undefined>;
 }
 let sharedModule: SharedModule;
 jest.isolateModules(() => {
-  sharedModule = require('../shared');
+  sharedModule = require('../utils/shared');
 });
 
 describe('Shared module', () => {
@@ -55,21 +57,22 @@ describe('Shared module', () => {
   test('Should detect downloaded script', () => {
     injectScript('https://pw.paddle.com/pw.js');
     injectScript('https://cdn.paddle.com/paddle/v2/paddle.js');
-
-    expect(!!findScript()).toBe(true);
+    const cdnUrl = getCDNInfoBasedOnVersion(DefaultVersion)?.url as string;
+    expect(!!findScript(cdnUrl)).toBe(true);
   });
 
   test('Should skip Non Paddle Billing scripts', () => {
+    const cdnUrl = getCDNInfoBasedOnVersion(DefaultVersion)?.url as string;
     injectScript('https://cdn.paddle.com/paddle/v1/paddle.js');
 
-    expect(!!findScript()).toBe(false);
+    expect(!!findScript(cdnUrl)).toBe(false);
   });
 
   test('Should return paddle instance on load event', async () => {
     window.Paddle = mockedPaddleInstance;
     injectScript('https://cdn.paddle.com/paddle/v2/paddle.js');
     const script = document.querySelector(PADDLE_JS_SCRIPT);
-    const promise = sharedModule.loadFromCDN();
+    const promise = sharedModule.loadFromCDN('v1');
     script?.dispatchEvent(new Event('load'));
     return promise.then((paddleInstance) => expect(paddleInstance).toBe(mockedPaddleInstance)).catch(console.warn);
   });
@@ -77,8 +80,8 @@ describe('Shared module', () => {
   test('Should reject promise on Error', async () => {
     injectScript('https://cdn.paddle.com/paddle/v2/paddle.js');
     const script = document.querySelector(PADDLE_JS_SCRIPT);
-    const promise = sharedModule.loadFromCDN();
+    const promise = sharedModule.loadFromCDN('v1');
     script?.dispatchEvent(new Event('error'));
-    return promise.catch((e) => expect(e.message).toBe('Failed to load Paddle.js'));
+    return promise.catch((e) => expect(e.message).toBe('Paddle.js not available'));
   });
 });
