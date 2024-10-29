@@ -51,8 +51,8 @@ export function loadFromCDN(version: Version): Promise<Paddle | undefined> | und
     }
 
     // Return Paddle instance if it is already initialized
-    if (window[paddleInstanceName]) {
-      resolve(window[paddleInstanceName]);
+    if (window[paddleInstanceName] || window.Paddle) {
+      resolve(window[paddleInstanceName] || window.Paddle);
       return;
     }
 
@@ -66,8 +66,8 @@ export function loadFromCDN(version: Version): Promise<Paddle | undefined> | und
 
       // Wait for `load` event before returning
       script.addEventListener('load', () => {
-        if (window[paddleInstanceName]) {
-          resolve(window[paddleInstanceName]);
+        if (window[paddleInstanceName] || window.Paddle) {
+          resolve(window[paddleInstanceName] || window.Paddle);
         } else {
           reject(new Error('Paddle.js not available'));
         }
