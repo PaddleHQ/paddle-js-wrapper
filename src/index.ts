@@ -31,10 +31,10 @@ export async function initializePaddle(options?: InitializePaddleOptions): Promi
 
 export function getPaddleInstance(version: Version = DefaultVersion) {
   if (version === Versions.V1) {
-    return window.PaddleBillingV1 as Paddle;
+    return (window.PaddleBillingV1 || window.Paddle) as Paddle;
   } else if (version === Versions.CLASSIC) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    return window.PaddleClassic as any;
+    return (window.PaddleClassic || window.Paddle) as any;
   } else {
     console.error('[Paddle] Unknown Paddle Version');
     return;
