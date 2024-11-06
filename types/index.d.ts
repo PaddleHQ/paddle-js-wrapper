@@ -127,4 +127,7 @@ export type InitializePaddleOptions = PaddleSetupOptions & {
 };
 
 export function initializePaddle(options?: InitializePaddleOptions): Promise<Paddle | undefined>;
-export function getPaddleInstance(version?: Version);
+export function getPaddleInstance(version: 'v1'): Paddle | undefined;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function getPaddleInstance(version: 'classic'): any;
+export function getPaddleInstance(): Paddle | undefined;
