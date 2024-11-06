@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.3.2-next.0 - 2024-11-06
+
+### Fixed
+
+- Add return type to `getPaddleInstance` type definition
+
+---
+
 ## 1.3.1-next.0 - 2024-10-30
 
 ### Fixed
