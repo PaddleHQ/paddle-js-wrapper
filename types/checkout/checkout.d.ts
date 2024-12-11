@@ -91,7 +91,7 @@ interface CheckoutOpenOptionsWithDiscountCode {
 interface CheckoutOpenOptionsWithCustomer {
   customer?: CheckoutCustomer;
   customerAuthToken?: never;
-  savedPaymentMethodId?: string;
+  savedPaymentMethodId?: never;
 }
 
 interface CheckoutOpenOptionsWithCustomerAuthToken {
