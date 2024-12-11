@@ -88,20 +88,33 @@ interface CheckoutOpenOptionsWithDiscountCode {
   discountId?: never;
 }
 
+interface CheckoutOpenOptionsWithCustomer {
+  customer?: CheckoutCustomer;
+  customerAuthToken?: never;
+  savedPaymentMethodId?: never;
+}
+
+interface CheckoutOpenOptionsWithCustomerAuthToken {
+  customer?: never;
+  customerAuthToken?: string;
+  savedPaymentMethodId?: string;
+}
+
 interface CheckoutOpenBaseOptions {
   settings?: CheckoutSettings;
-  customer?: CheckoutCustomer;
   customData?: Record<string, unknown>;
 }
 
 type CheckoutOpenOptionsWithLineItems = CheckoutOpenOptionsWithItems | CheckoutOpenOptionsWithTransactionId;
 type CheckoutOpenOptionsWithDiscount = CheckoutOpenOptionsWithDiscountId | CheckoutOpenOptionsWithDiscountCode;
+type CheckoutOpenOptionsWithCustomerData = CheckoutOpenOptionsWithCustomer | CheckoutOpenOptionsWithCustomerAuthToken;
 
 export type CheckoutOpenOptions = CheckoutOpenBaseOptions &
   CheckoutOpenOptionsWithLineItems &
-  CheckoutOpenOptionsWithDiscount;
+  CheckoutOpenOptionsWithDiscount &
+  CheckoutOpenOptionsWithCustomerData;
 
-export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount & {
-  items: CheckoutOpenLineItem[];
-  customer?: CheckoutCustomer;
-};
+export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount &
+  CheckoutOpenOptionsWithCustomerData & {
+    items: CheckoutOpenLineItem[];
+  };
