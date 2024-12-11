@@ -1,7 +1,15 @@
 import { CountryCode } from './country-code';
 import { CurrencyCode } from './currency-code';
 
-export type AvailablePaymentMethod = 'alipay' | 'apple_pay' | 'bancontact' | 'card' | 'google_pay' | 'ideal' | 'paypal';
+export type AvailablePaymentMethod =
+  | 'alipay'
+  | 'apple_pay'
+  | 'bancontact'
+  | 'card'
+  | 'google_pay'
+  | 'ideal'
+  | 'paypal'
+  | 'saved_payment_methods';
 
 export type Variant = 'multi-page' | 'one-page';
 
