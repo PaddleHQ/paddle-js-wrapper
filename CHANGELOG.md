@@ -6,6 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.4.0 - 2025-03-04
+
+### Added
+
+- Added support for `customData` in `Paddle.Checkout.updateCheckout()` function.
+
+---
+
+## 1.3.3 - 2024-12-11
+
+### Added
+
+- Added support for saved payment methods. See [related changelog](https://developer.paddle.com/changelog/2024/saved-payment-methods?utm_source=dx&utm_medium=paddle-js-wrapper).
+
+---
+
 ## 1.3.2 - 2024-11-06
 
 ### Fixed
