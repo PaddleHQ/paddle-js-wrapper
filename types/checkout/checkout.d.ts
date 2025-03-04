@@ -116,5 +116,6 @@ export type CheckoutOpenOptions = CheckoutOpenBaseOptions &
 
 export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount &
   CheckoutOpenOptionsWithCustomerData & {
-    items: CheckoutOpenLineItem[];
+    items?: CheckoutOpenLineItem[];
+    customData?: Record<string, unknown>;
   };
