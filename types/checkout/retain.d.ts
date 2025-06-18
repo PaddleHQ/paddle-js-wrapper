@@ -5,7 +5,8 @@ export type RETAIN_DEMO_FEATURE =
   | 'paymentRecoveryInApp'
   | 'termOptimization'
   | 'termOptimizationInApp'
-  | 'cancellationFlow';
+  | 'cancellationFlow'
+  | 'prePaymentFailure';
 
 type RetainCancellationFlowNotShownStatus = 'error';
 
