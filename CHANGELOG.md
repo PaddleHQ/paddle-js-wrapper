@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.4.2 - 2025-06-18
+
+### Added
+
+- Added support for `prePaymentFailure` in `Paddle.Retain.demo()` function.
+
+---
+
+
 ## 1.4.1 - 2025-04-16
 
 ### Fixed
