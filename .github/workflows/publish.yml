@@ -6,6 +6,9 @@ on:
       - main
       - v1.X
 
+permissions:
+  contents: read
+
 jobs:
   run-publish:
     name: Run publish
@@ -16,6 +19,11 @@ jobs:
       actions: write
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
       - name: Check out git repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
