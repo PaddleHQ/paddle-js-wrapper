@@ -7,6 +7,8 @@ import {
   PaddleEventData,
   PaddleSetupPwCustomer,
   CheckoutUpdateOptions,
+  CheckoutUpsell,
+  CheckoutUpsellSettings,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
 import { PricePreviewItem, PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
@@ -46,6 +48,7 @@ export {
   CheckoutEventsTimePeriodInterval,
   CheckoutEventsTotals,
   CheckoutEventError,
+  CheckoutEventUpsell,
 } from './checkout/events';
 
 export type DisplayMode = 'inline' | 'overlay';
@@ -74,6 +77,8 @@ export {
   TransactionPreviewItem,
   TransactionPreviewParams,
   TransactionPreviewResponse,
+  CheckoutUpsellSettings,
+  CheckoutUpsell,
 };
 
 export interface Paddle {

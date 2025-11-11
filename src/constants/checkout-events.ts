@@ -16,6 +16,7 @@ export enum CheckoutEventNames {
   CHECKOUT_PAYMENT_FAILED = 'checkout.payment.failed',
   CHECKOUT_DISCOUNT_APPLIED = 'checkout.discount.applied',
   CHECKOUT_DISCOUNT_REMOVED = 'checkout.discount.removed',
+  CHECKOUT_UPSELL_CANCELED = 'checkout.upsell.canceled',
 }
 
 export enum CheckoutEventsTimePeriodInterval {

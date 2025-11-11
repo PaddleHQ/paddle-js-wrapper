@@ -100,9 +100,19 @@ interface CheckoutOpenOptionsWithCustomerAuthToken {
   savedPaymentMethodId?: string;
 }
 
+export interface CheckoutUpsellSettings {
+  showSkipButton?: boolean;
+}
+
+export interface CheckoutUpsell {
+  transactionId: string;
+  settings?: CheckoutUpsellSettings;
+}
+
 interface CheckoutOpenBaseOptions {
   settings?: CheckoutSettings;
   customData?: Record<string, unknown>;
+  upsell?: CheckoutUpsell;
 }
 
 type CheckoutOpenOptionsWithLineItems = CheckoutOpenOptionsWithItems | CheckoutOpenOptionsWithTransactionId;
@@ -118,4 +128,5 @@ export type CheckoutUpdateOptions = CheckoutOpenOptionsWithDiscount &
   CheckoutOpenOptionsWithCustomerData & {
     items?: CheckoutOpenLineItem[];
     customData?: Record<string, unknown>;
+    upsell?: CheckoutUpsell;
   };

@@ -18,6 +18,7 @@ export enum CheckoutEventNames {
   CHECKOUT_PAYMENT_FAILED = 'checkout.payment.failed',
   CHECKOUT_DISCOUNT_APPLIED = 'checkout.discount.applied',
   CHECKOUT_DISCOUNT_REMOVED = 'checkout.discount.removed',
+  CHECKOUT_UPSELL_CANCELED = 'checkout.upsell.canceled',
 }
 
 export enum CheckoutEventsTimePeriodInterval {
@@ -141,6 +142,10 @@ export interface CheckoutEventsDiscount {
   id: string;
 }
 
+export interface CheckoutEventUpsell {
+  transaction_id: string;
+}
+
 export interface CheckoutEventsData {
   currency_code: CurrencyCode;
   custom_data?: object | null;
@@ -154,6 +159,7 @@ export interface CheckoutEventsData {
   status: CheckoutEventsStatus;
   totals: CheckoutEventsTotals;
   transaction_id: string;
+  upsell: CheckoutEventUpsell | null;
 }
 
 export interface CheckoutEventError {
