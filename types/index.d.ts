@@ -78,7 +78,7 @@ export {
   TransactionPreviewParams,
   TransactionPreviewResponse,
   CheckoutUpsellSettings,
-  CheckoutUpsell
+  CheckoutUpsell,
 };
 
 export interface Paddle {
