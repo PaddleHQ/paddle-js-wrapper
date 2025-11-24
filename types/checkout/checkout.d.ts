@@ -43,7 +43,6 @@ interface PaddleSetupBaseOptions {
 export interface PaddleEventData extends Partial<CheckoutEventError> {
   name?: CheckoutEventNames;
   data?: CheckoutEventsData;
-  error?: CheckoutEventError;
   type?: string;
 }
 
