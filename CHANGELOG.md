@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.6.0-next.0 - 2025-11-24
+
+### Added
+
+- Added `CHECKOUT_PAYMENT_ERROR` event name (`'checkout.payment.error'`) to `CheckoutEventNames` enum.
+- Added `name` field to `CheckoutEventError` interface to match the actual error event payload structure.
+
+### Changed
+
+- Updated `CheckoutEventError` interface to reflect the actual error event payload structure. Error events now have all fields (`name`, `type`, `code`, `detail`, `documentation_url`) at the top level instead of nested in an `error` object.
+- Removed `error?: CheckoutEventError` property from `PaddleEventData` interface as error events no longer use a nested error object structure.
+
 ## 1.5.1-next.0 - 2025-11-11
 
 ### Added
