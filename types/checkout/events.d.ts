@@ -16,6 +16,7 @@ export enum CheckoutEventNames {
   CHECKOUT_PAYMENT_SELECTED = 'checkout.payment.selected',
   CHECKOUT_PAYMENT_INITIATED = 'checkout.payment.initiated',
   CHECKOUT_PAYMENT_FAILED = 'checkout.payment.failed',
+  CHECKOUT_PAYMENT_ERROR = 'checkout.payment.error',
   CHECKOUT_DISCOUNT_APPLIED = 'checkout.discount.applied',
   CHECKOUT_DISCOUNT_REMOVED = 'checkout.discount.removed',
   CHECKOUT_UPSELL_CANCELED = 'checkout.upsell.canceled',
@@ -163,6 +164,7 @@ export interface CheckoutEventsData {
 }
 
 export interface CheckoutEventError {
+  name: CheckoutEventNames.CHECKOUT_ERROR | CheckoutEventNames.CHECKOUT_PAYMENT_ERROR;
   type: string;
   code: string;
   detail: string;
