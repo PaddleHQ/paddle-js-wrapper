@@ -36,6 +36,7 @@ export enum CheckoutEventsPaymentMethodTypes {
   GOOGLE_PAY = 'google-pay',
   IDEAL = 'ideal',
   PAYPAL = 'paypal',
+  WECHAT_PAY = 'wechat-pay',
   WIRE_TRANSFER = 'wire-transfer',
   NONE = 'none',
 }
