@@ -18,7 +18,8 @@ export type AvailablePaymentMethod =
   | 'pix'
   | 'samsung_pay'
   | 'saved_payment_methods'
-  | 'upi';
+  | 'upi'
+  | 'wechat_pay';
 
 export type Variant = 'multi-page' | 'one-page';
 
