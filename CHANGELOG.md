@@ -13,7 +13,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 - Added `wechat_pay` to `AvailablePaymentMethod` type.
 - Added `WECHAT_PAY` to `CheckoutEventsPaymentMethodTypes` enum.
 
-## 1.6.1-next.0 - 2025-12-08
+## 1.6.1 - 2025-12-08
 
 ### Added
 
@@ -25,17 +25,17 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 - Updated `CheckoutEventError` interface to reflect the actual error event payload structure. Error events now have all fields (`name`, `type`, `code`, `detail`, `documentation_url`) at the top level instead of nested in an `error` object.
 - Removed `error?: CheckoutEventError` property from `PaddleEventData` interface as error events no longer use a nested error object structure.
 
-## 1.6.0-next.0 - 2025-11-11
+## 1.6.0 - 2025-11-11
 
 _GitHub release only - No functional changes since 1.5.1_
 
-## 1.5.1-next.0 - 2025-11-11
+## 1.5.1 - 2025-11-11
 
 ### Added
 
 - Updated `AvailablePaymentMethod` union to include korean payment methods, BLIK, MB WAY, Pix and UPI.
 
-## 1.5.0-next.0 - 2025-11-11
+## 1.5.0 - 2025-11-11
 
 ### Added
 
@@ -43,7 +43,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.4.2-next.0 - 2025-06-18
+## 1.4.2 - 2025-06-18
 
 ### Added
 
@@ -59,7 +59,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.4.0-next.0 - 2025-03-04
+## 1.4.0 - 2025-03-04
 
 ### Added
 
@@ -67,7 +67,15 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.3.2-next.0 - 2024-11-06
+## 1.3.3 - 2024-12-11
+
+### Added
+
+- Added support for saved payment methods. See [related changelog](https://developer.paddle.com/changelog/2024/saved-payment-methods?utm_source=dx&utm_medium=paddle-js-wrapper).
+
+---
+
+## 1.3.2 - 2024-11-06
 
 ### Fixed
 
@@ -75,7 +83,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.3.1-next.0 - 2024-10-30
+## 1.3.1 - 2024-10-29
 
 ### Fixed
 
@@ -83,7 +91,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.3.0-next.0 - 2024-10-22
+## 1.3.0 - 2024-10-23
 
 ### Added
 
@@ -93,7 +101,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.2.3-next.0 - 2024-10-01
+## 1.2.3 - 2024-10-01
 
 ### Fixed
 
@@ -105,7 +113,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.2.2-next.0 - 2024-09-27
+## 1.2.2 - 2024-09-27
 
 ### Fixed
 
@@ -113,7 +121,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.1.1-next.1 - 2024-07-29
+## 1.2.1 - 2024-07-29
 
 ### Fixed
 
@@ -121,7 +129,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.1.1-next.0 - 2024-06-06
+## 1.2.0 - 2024-06-06
 
 ### Added
 
@@ -129,7 +137,7 @@ _GitHub release only - No functional changes since 1.5.1_
 
 ---
 
-## 1.1.0-next.0 - 2024-05-28
+## 1.1.1 - 2024-05-28
 
 ### Fixed
 
