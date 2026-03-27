@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.6.3-next.0 - 2026-03-27
+
+### Added
+
+- Added `CLP` (Chilean peso) and `PEN` (Peruvian sol) currencies.
+
 ## 1.6.2-next.0 - 2026-02-02
 
 ### Added
