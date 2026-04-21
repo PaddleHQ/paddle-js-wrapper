@@ -51,7 +51,7 @@ export {
   CheckoutEventUpsell,
 } from './checkout/events';
 
-export type DisplayMode = 'inline' | 'overlay';
+export type DisplayMode = 'inline' | 'overlay' | 'express';
 export type Environments = 'production' | 'sandbox';
 export type Version = 'classic' | 'v1';
 export type Theme = 'light' | 'dark';
