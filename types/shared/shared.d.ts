@@ -21,7 +21,7 @@ export type AvailablePaymentMethod =
   | 'upi'
   | 'wechat_pay';
 
-export type Variant = 'multi-page' | 'one-page';
+export type Variant = 'multi-page' | 'one-page' | 'express';
 
 export type TaxMode = 'account_setting' | 'external' | 'internal';
 

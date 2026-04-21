@@ -10,7 +10,7 @@ Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx
 
 ### Added
 
-- Added `express` to the `DisplayMode` type for checkout settings.
+- Added `express` to the `Variant` type for checkout settings.
 
 ## 1.6.3-next.0 - 2026-03-27
 
