@@ -16,6 +16,7 @@ export interface CheckoutSettings {
   allowLogout?: boolean;
   showAddDiscounts?: boolean;
   showAddTaxId?: boolean;
+  showNonExpressPaymentMethods?: boolean;
   frameTarget?: string;
   frameStyle?: string;
   frameInitialHeight?: number;
