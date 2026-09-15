@@ -18,6 +18,7 @@ export enum CheckoutEventNames {
   CHECKOUT_DISCOUNT_APPLIED = 'checkout.discount.applied',
   CHECKOUT_DISCOUNT_REMOVED = 'checkout.discount.removed',
   CHECKOUT_UPSELL_CANCELED = 'checkout.upsell.canceled',
+  CHECKOUT_FRAME_RESIZED = 'checkout.frame.resized'
 }
 
 export enum CheckoutEventsTimePeriodInterval {
