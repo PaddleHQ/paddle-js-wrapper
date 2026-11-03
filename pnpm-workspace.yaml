@@ -1,5 +1,3 @@
-# Without this pnpm computes different workspace patterns at run time than it records
-# at install, so every `pnpm run` warns that node_modules is out of sync.
 packages:
   - .
 
