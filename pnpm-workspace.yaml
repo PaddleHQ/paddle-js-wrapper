@@ -1,0 +1,7 @@
+# Without this pnpm computes different workspace patterns at run time than it records
+# at install, so every `pnpm run` warns that node_modules is out of sync.
+packages:
+  - .
+
+# 48h registry cooldown: blunts smash-and-grab supply-chain attacks.
+minimumReleaseAge: 2880
