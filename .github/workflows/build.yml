@@ -35,14 +35,20 @@ jobs:
       - name: Check out git repository
         uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
 
+      # Before setup-node, so its `cache: pnpm` can resolve the store path.
+      - name: Install pnpm
+        uses: pnpm/action-setup@0e279bb959325dab635dd2c09392533439d90093 # v6.0.8
+        with:
+          run_install: false
+
       - name: Set up Node.js
         uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3
         with:
           node-version: lts/*
-          cache: "yarn"
+          cache: "pnpm"
 
-      - name: Install yarn dependencies
-        run: yarn install
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn build
+        run: pnpm build

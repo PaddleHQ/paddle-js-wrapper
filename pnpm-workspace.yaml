@@ -1,0 +1,5 @@
+packages:
+  - .
+
+# 48h registry cooldown: blunts smash-and-grab supply-chain attacks.
+minimumReleaseAge: 2880
