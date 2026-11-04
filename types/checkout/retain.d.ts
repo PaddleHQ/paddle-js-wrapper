@@ -55,4 +55,5 @@ export interface RetainDemoAttributeProps {
 
 export interface RetainCancellationFlowAttributeProps {
   subscriptionId: string;
+  cancellationFlowId?: string;
 }

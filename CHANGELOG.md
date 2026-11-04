@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Check our main [developer changelog](https://developer.paddle.com/?utm_source=dx&utm_medium=paddle-js-wrapper) for information about changes to the Paddle Billing platform, the Paddle API, and other developer tools.
 
+## 1.6.6 - 2026-11-04
+
+### Added
+
+- Added `cancellationFlowId` to `RetainCancellationFlowAttributeProps` to choose which cancellation flow to show.
+
 ## 1.6.5 - 2026-08-25
 
 ### Added
