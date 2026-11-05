@@ -24,6 +24,17 @@ export interface CheckoutSettings {
   allowedPaymentMethods?: AvailablePaymentMethod[];
   allowDiscountRemoval?: boolean;
   variant?: Variant;
+  express?: ExpressSettings;
+}
+
+export interface ExpressComponentSettings {
+  componentVisible: boolean;
+  paymentMethods?: AvailablePaymentMethod[];
+}
+
+export interface ExpressSettings {
+  expressCheckoutComponent: ExpressComponentSettings;
+  standardCheckoutComponent: ExpressComponentSettings;
 }
 
 export interface PaddleSetupPwCustomer {

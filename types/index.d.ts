@@ -9,6 +9,8 @@ import {
   CheckoutUpdateOptions,
   CheckoutUpsell,
   CheckoutUpsellSettings,
+  ExpressSettings,
+  ExpressComponentSettings,
 } from './checkout/checkout';
 import { CheckoutCustomer, CheckoutCustomerAddress, CheckoutCustomerBusiness } from './checkout/customer';
 import { PricePreviewItem, PricePreviewParams, PricePreviewResponse } from './price-preview/price-preview';
@@ -79,6 +81,8 @@ export {
   TransactionPreviewResponse,
   CheckoutUpsellSettings,
   CheckoutUpsell,
+  ExpressSettings,
+  ExpressComponentSettings,
 };
 
 export interface Paddle {
